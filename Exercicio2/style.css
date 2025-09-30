@@ -1,0 +1,175 @@
+/* Importando uma fonte para um visual mais elegante */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Animação para o surgimento suave das tarefas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilização geral da página */
+body {
+    font-family: 'Inter', sans-serif;
+    /* Fundo em gradiente suave para um look moderno */
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Estilo do container principal da lista de tarefas */
+.container-tarefas {
+    background-color: rgba(255, 255, 255, 0.85); /* Fundo branco com leve transparência */
+    backdrop-filter: blur(10px); /* Efeito de vidro fosco (para navegadores compatíveis) */
+    padding: 35px;
+    border-radius: 16px;
+    /* Sombra mais suave e em camadas para dar profundidade */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 100%;
+    max-width: 550px; /* Um pouco mais largo para respirar melhor */
+}
+
+/* Estilo do título H1 */
+h1 {
+    color: #1e272e; /* Cor escura para o texto principal */
+    text-align: center;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 30px;
+    letter-spacing: -1px; /* Espaçamento entre letras mais justo */
+}
+
+/* Container do input e botão */
+.input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+/* Estilo do campo de texto */
+#inputTarefa {
+    flex-grow: 1;
+    padding: 14px 18px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #dfe6e9;
+    border-radius: 10px;
+    background-color: #fdfdfd;
+    transition: all 0.3s ease;
+}
+
+/* Efeito de foco no input com sombra interna */
+#inputTarefa:focus {
+    outline: none;
+    border-color: #8c7ae6;
+    box-shadow: 0 0 0 3px rgba(140, 122, 230, 0.15);
+}
+
+/* Estilo do botão Adicionar */
+#botaoAdicionar {
+    padding: 0 25px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #8c7ae6; /* Um roxo vibrante como cor primária */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Efeito hover no botão com leve elevação */
+#botaoAdicionar:hover {
+    background-color: #7158e2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(140, 122, 230, 0.3);
+}
+
+/* Estilo da lista de tarefas */
+#listaTarefas {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilo de cada item (li) da lista */
+#listaTarefas li {
+    background-color: #fff;
+    padding: 12px 12px 12px 20px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #f1f1f1;
+    word-break: break-word;
+    /* Aplica a animação que definimos no início */
+    animation: fadeIn 0.5s ease;
+    transition: box-shadow 0.2s ease;
+}
+
+#listaTarefas li:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+/* Span que contém o texto da tarefa */
+#listaTarefas li span {
+    color: #2d3436;
+    font-weight: 500;
+}
+
+/* Estilo para o novo botão Remover com ícone "X" */
+.botao-remover {
+    width: 28px;
+    height: 28px;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 50%; /* Deixa o botão redondo */
+    cursor: pointer;
+    margin-left: 15px;
+    position: relative; /* Necessário para posicionar o ícone "X" */
+    transition: all 0.3s ease;
+}
+
+.botao-remover:hover {
+    background-color: #e74c3c; /* Vermelho no hover */
+}
+
+/* Criando o ícone "X" com pseudo-elementos ::before e ::after */
+.botao-remover::before,
+.botao-remover::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px; /* Largura da linha do X */
+    height: 2px;  /* Espessura da linha do X */
+    background-color: #636e72; /* Cor cinza para o X */
+    transition: background-color 0.3s ease;
+}
+
+/* Gira a primeira linha do X */
+.botao-remover::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* Gira a segunda linha do X */
+.botao-remover::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Quando passamos o mouse no botão, o X fica branco */
+.botao-remover:hover::before,
+.botao-remover:hover::after {
+    background-color: white;
+}
